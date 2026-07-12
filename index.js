@@ -10,11 +10,7 @@ const cors = require("cors");
 const app = express();
 
 //Enabling CORS for my rout only(Access- COntrol-Allow-Origin)
-app.use(
-  cors({
-    origin: "http://localhost:5173",
-  }),
-);
+app.use(cors());
 
 // defining a simple GET endpoint at /hello
 // When someone visits http://localhost:3000/hello,
@@ -22,6 +18,10 @@ app.use(
 
 app.get("/hello", (req, res) => {
   res.json({ message: "hello world!" });
+});
+
+app.get("/", (req, res) => {
+  res.redirect("/hello");
 });
 
 // Choosing a PORT where the server will run
